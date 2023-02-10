@@ -1,0 +1,23 @@
+{
+  "name": "crypto-trade",
+  "version": "1.0.0",
+  "description": "Js Backend Project with MongoDB",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kalinsky-dev/CRYPTO-TRADE.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kalinsky-dev/CRYPTO-TRADE/issues"
+  },
+  "homepage": "https://github.com/kalinsky-dev/CRYPTO-TRADE#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  }
+}
