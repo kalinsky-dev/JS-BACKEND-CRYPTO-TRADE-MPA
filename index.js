@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 const cookieParser = require('cookie-parser');
 
 const routes = require('./routes');
+const { authentication } = require('./middlewares/authenticationMiddleware');
 
 const app = express();
 
@@ -13,6 +14,7 @@ app.set('view engine', 'hbs');
 app.use('/static', express.static('public'));
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(authentication);
 app.use(routes);
 
 mongoose.set('strictQuery', false);

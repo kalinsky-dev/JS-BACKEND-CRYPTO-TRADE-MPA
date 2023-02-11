@@ -2,7 +2,7 @@ const User = require('../models/User');
 const bcrypt = require('bcrypt');
 const jwt = require('../lib/jsonwebtoken');
 
-const SECRET = 'SomeSecret';
+const { SECRET } = require('../constants');
 
 exports.findByUsername = (username) => User.findOne({ username });
 
@@ -39,7 +39,7 @@ exports.login = async (email, password) => {
     throw new Error('Invalid email or password!');
   }
   //Password is valid
-  const isValid = await bcrypt.compare(user.password, password);
+  const isValid = await bcrypt.compare(password, user.password);
   if (!isValid) {
     throw new Error('Invalid email or password!');
   }
