@@ -9,7 +9,9 @@ router.post('/register', async (req, res) => {
   const { username, email, password, repeatPassword } = req.body;
 
   await authService.register(username, email, password, repeatPassword);
-  res.render('auth/register');
+
+  //TODO: login automatically
+  res.redirect('/');
 });
 
 router.get('/login', (req, res) => {
