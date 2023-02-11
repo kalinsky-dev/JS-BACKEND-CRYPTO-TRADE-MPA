@@ -9,10 +9,20 @@ router.get('/register', (req, res) => {
 router.post('/register', async (req, res) => {
   const { username, email, password, repeatPassword } = req.body;
 
-  await authService.register(username, email, password, repeatPassword);
+  try {
+    //TODO: login automatically
+    const token = await authService.register(
+      username,
+      email,
+      password,
+      repeatPassword
+    );
 
-  //TODO: login automatically
-  res.redirect('/');
+    res.cookie('auth', token);
+    res.redirect('/');
+  } catch (error) {
+    res.status(400).render('auth/register', { error: error.message });
+  }
 });
 
 router.get('/login', (req, res) => {
@@ -21,11 +31,13 @@ router.get('/login', (req, res) => {
 
 router.post('/login', async (req, res) => {
   const { email, password } = req.body;
-
-  const token = await authService.login(email, password);
-
-  res.cookie('auth', token);
-  res.redirect('/');
+  try {
+    const token = await authService.login(email, password);
+    res.cookie('auth', token);
+    res.redirect('/');
+  } catch (error) {
+    return res.status(404).render('auth/login', { error: error.message });
+  }
 });
 
 router.get('/logout', isAuthorized, (req, res) => {
