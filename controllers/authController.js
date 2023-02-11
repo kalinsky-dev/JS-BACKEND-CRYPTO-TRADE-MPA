@@ -1,10 +1,13 @@
 const router = require('express').Router();
 const authService = require('../services/authService');
 const { isAuthorized } = require('../middlewares/authMiddleware');
+const { getErrorMessage } = require('../utils/errorUtils');
 
 router.get('/register', (req, res) => {
   res.render('auth/register');
 });
+
+  
 
 router.post('/register', async (req, res) => {
   const { username, email, password, repeatPassword } = req.body;
@@ -21,7 +24,7 @@ router.post('/register', async (req, res) => {
     res.cookie('auth', token);
     res.redirect('/');
   } catch (error) {
-    res.status(400).render('auth/register', { error: error.message });
+    res.status(400).render('auth/register', { error: getErrorMessage(error) });
   }
 });
 
@@ -36,7 +39,9 @@ router.post('/login', async (req, res) => {
     res.cookie('auth', token);
     res.redirect('/');
   } catch (error) {
-    return res.status(404).render('auth/login', { error: error.message });
+    return res
+      .status(404)
+      .render('auth/login', { error: getErrorMessage(error) });
   }
 });
 
