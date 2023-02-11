@@ -13,12 +13,18 @@ exports.register = async (username, email, password, repeatPassword) => {
     throw new Error('Password missmatch!');
   }
   //Check if user exists
-  const existingUser = await this.findByUsername(username);
+
+  //   const existingUser = await this.findByUsername(username);
+  //   if (existingUser) {
+  //     throw new Error('User exists!');
+  //   }
+
+  const existingUser = await User.findOne({ $or: [{ email }, { username }] });
   if (existingUser) {
     throw new Error('User exists!');
   }
 
-  //Validate password
+  //   Validate password
 
   const hashedPassword = await bcrypt.hash(password, 10);
 
