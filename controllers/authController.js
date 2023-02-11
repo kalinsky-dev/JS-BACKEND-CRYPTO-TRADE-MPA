@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const authService = require('../services/authService');
+const { isAuthorized } = require('../middlewares/authMiddleware');
 
 router.get('/register', (req, res) => {
   res.render('auth/register');
@@ -24,6 +25,11 @@ router.post('/login', async (req, res) => {
   const token = await authService.login(email, password);
 
   res.cookie('auth', token);
+  res.redirect('/');
+});
+
+router.get('/logout', isAuthorized, (req, res) => {
+  res.clearCookie('auth');
   res.redirect('/');
 });
 
