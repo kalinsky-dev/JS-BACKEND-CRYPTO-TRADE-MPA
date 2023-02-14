@@ -18,8 +18,12 @@ router.get('/:cryptoId/details', async (req, res) => {
 });
 
 router.get('/:cryptoId/buy', isAuthorized, async (req, res) => {
-  await cryptoService.buy(req.user._id, req.params.cryptoId);
-  res.redirect(`/crypto/${req.params.cryptoId}/details`);
+  try {
+    await cryptoService.buy(req.user._id, req.params.cryptoId);
+    res.redirect(`/crypto/${req.params.cryptoId}/details`);
+  } catch (error) {
+    return res.status(400).render('404', { error: getErrorMessage(error) });
+  }
 });
 
 router.get('/:cryptoId/edit', isAuthorized, async (req, res) => {
@@ -65,7 +69,13 @@ router.get('/search', async (req, res) => {
   const { name, paymentMethod } = req.query;
   const crypto = await cryptoService.search(name, paymentMethod);
 
-  res.render('crypto/search', { crypto });
+  const paymentMethods = Object.keys(paymentMethodsMap).map((key) => ({
+    value: key,
+    label: paymentMethodsMap[key],
+    isSelected: crypto.paymentMethod == key,
+  }));
+
+  res.render('crypto/search', { crypto, paymentMethods });
 });
 
 module.exports = router;
