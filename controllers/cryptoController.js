@@ -68,14 +68,7 @@ router.post('/create', isAuthorized, async (req, res) => {
 router.get('/search', async (req, res) => {
   const { name, paymentMethod } = req.query;
   const crypto = await cryptoService.search(name, paymentMethod);
-
-  const paymentMethods = Object.keys(paymentMethodsMap).map((key) => ({
-    value: key,
-    label: paymentMethodsMap[key],
-    isSelected: crypto.paymentMethod == key,
-  }));
-
-  res.render('crypto/search', { crypto, paymentMethods });
+  res.render('crypto/search', { crypto });
 });
 
 module.exports = router;
