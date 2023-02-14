@@ -61,4 +61,11 @@ router.post('/create', isAuthorized, async (req, res) => {
   res.redirect('/crypto/catalog');
 });
 
+router.get('/search', async (req, res) => {
+  const { name, paymentMethod } = req.query;
+  const crypto = await cryptoService.search(name, paymentMethod);
+
+  res.render('crypto/search', { crypto });
+});
+
 module.exports = router;
