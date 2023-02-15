@@ -8,10 +8,14 @@ exports.buy = async (userId, cryptoId) => {
   const crypto = await Crypto.findById(cryptoId);
 
   //TODO: check if user has already bought the crypto
-
-  crypto.buyers.push(userId);
-  return crypto.save();
-  //   Crypto.findByIdAndUpdate(cryptoId, { $push: { buyers: userId } });
+  const isBuyer = crypto.buyers?.some((id) => id == userId);
+  if (!isBuyer) {
+    crypto.buyers.push(userId);
+    return crypto.save();
+    // Crypto.findByIdAndUpdate(cryptoId, { $push: { buyers: userId } });
+  } else {
+    throw new Error('User has already bought this!');
+  }
 };
 
 exports.create = (ownerId, cryptoData) =>
