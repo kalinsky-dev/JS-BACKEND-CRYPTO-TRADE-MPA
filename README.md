@@ -6,9 +6,10 @@
 
 &nbsp; &nbsp; &nbsp;**A Search for Crypto** is also implemented. All **crypto offers** are shown when the user opens the **search page**.The **search button** filter all matches by **name and payment method (case insensitive)**.
 
-&nbsp; &nbsp; &nbsp;All **Validations** of the User Input are implemented **Locally in the Controllers**. I use both **The System Errors** and the **Mongoose Errors** in my App. They are catched and rendered **Locally at the Coresponding Controller**.
 
+### Validations and Error Handling
 
+&nbsp; &nbsp; &nbsp;All **Validations** of the User Input are implemented **Locally in the Controllers**. I use both **The System Errors** and the **Mongoose Errors** in my App. They are catched and rendered **locally at the Coresponding Controller**.
 
 ### Used technologies
 
