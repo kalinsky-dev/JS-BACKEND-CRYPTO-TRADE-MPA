@@ -22,7 +22,7 @@
 
 ### After successful installation of MongoDB you can start the Application.
 
-To use Crypto-TRADE App locally, follow these steps:
+To use CRYPTO-TRADE App locally, follow these steps:
 
 1.  Clone the repository:
 
@@ -36,4 +36,4 @@ To use Crypto-TRADE App locally, follow these steps:
 
 - `npm start`
 
-That's it! You can now start Cubicle Application on your local machine at http://localhost:3000/.
+That's it! You can now start CRYPTO-TRADE Application on your local machine at http://localhost:3000/.
