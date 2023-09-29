@@ -26,7 +26,7 @@ To use **CRYPTO-TRADE** App locally, follow these steps:
 
 1.  Clone the repository:
 
-- `git clone https://github.com/kalinsky-dev/CRYPTO-TRADE`
+- `git clone https://github.com/kalinsky-dev/JS-BACKEND-CRYPTO-TRADE-MPA`
 
 2.  Navigate to the project directory and run npm install:
 
