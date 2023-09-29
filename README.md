@@ -11,7 +11,7 @@
 
 &nbsp; &nbsp; &nbsp;All **Validations** of the User Input are implemented **Locally in the Controllers**. I use both **The System Errors** and the **Mongoose Errors** in my App. They are catched and rendered **locally at the Coresponding Controller**.
 
-### Used technologies
+### Used Technologies & Dependencies
 
 - Express
 - Handlebars
