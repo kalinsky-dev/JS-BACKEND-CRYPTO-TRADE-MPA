@@ -22,7 +22,7 @@
 
 ### After successful installation of MongoDB you can start the Application.
 
-To use CRYPTO-TRADE App locally, follow these steps:
+To use **CRYPTO-TRADE** App locally, follow these steps:
 
 1.  Clone the repository:
 
