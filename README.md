@@ -30,7 +30,7 @@ To use **CRYPTO-TRADE** App locally, follow these steps:
 
 2.  Navigate to the project directory and run npm install:
 
-- `cd CRYPTO-TRADE & npm i`
+- `cd JS-BACKEND-CRYPTO-TRADE-MPA & npm i`
 
 3.  Start the application with npm start.
 
